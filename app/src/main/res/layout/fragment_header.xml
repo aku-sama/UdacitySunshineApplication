@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textHeaderDate"
+        style="@style/TextHeaderStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Today, August 10"/>
+
+    <TextView
+        android:id="@+id/textDayTemperature"
+        style="@style/TextTemperatureStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textHeaderDate"
+        android:text="22 oC"/>
+
+    <TextView
+        android:id="@+id/textNightTemperature"
+        style="@style/TextTemperatureStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textDayTemperature"
+        android:text="8 oC"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/textDayTemperature"
+        android:src="@mipmap/ic_launcher"/>
+
+</RelativeLayout>
