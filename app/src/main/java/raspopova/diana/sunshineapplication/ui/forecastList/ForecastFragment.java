@@ -1,5 +1,6 @@
-package raspopova.diana.sunshineapplication;
+package raspopova.diana.sunshineapplication.ui.forecastList;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,18 +15,22 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import raspopova.diana.sunshineapplication.adapters.ForecastAdapter;
+import raspopova.diana.sunshineapplication.R;
+import raspopova.diana.sunshineapplication.repository.model.weatherListObject;
+import raspopova.diana.sunshineapplication.ui.GeneralActivity;
 
 /**
  * Created by Diana on 10.08.2016.
  */
-public class MainFragment extends Fragment {
+public class ForecastFragment extends Fragment implements ForecastView {
 
     @BindView(R.id.recyclerViewForecast)
     RecyclerView forecastRecyclerView;
 
     private LinearLayoutManager mLayoutManager;
     private ForecastAdapter adapter;
+
+    private ForecastPresenter presenter;
 
     @Nullable
     @Override
@@ -40,23 +45,47 @@ public class MainFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        presenter = new ForecastPresenterImpl();
         mLayoutManager = new LinearLayoutManager(getActivity());
         forecastRecyclerView.setLayoutManager(mLayoutManager);
-
-        initTestForecastList();
+        presenter.onAttacheView(this);
+        presenter.getForecastList();
     }
 
-    private void initTestForecastList() {
-        List<String> testList = new ArrayList<>();
-        testList.add("Today, Sunny, 21oC/15oC");
-        testList.add("Tomorrow, Foggy, 17oC/12oC");
-        testList.add("Fri., Rainy, 23oC/10oC");
-        testList.add("Sat., Cloudy, 19oC/16oC");
-        testList.add("Son., Sunny, 31oC/22oC");
-        testList.add("Mon., Rainy, 26oC/16oC");
-        testList.add("Tues., Sunny, 24oC/14oC");
 
-        adapter = new ForecastAdapter(getActivity(), testList);
+    @Override
+    public void onStop() {
+        presenter.onDetachView();
+        super.onStop();
+    }
+
+
+    @Override
+    public void fillWeatherList(List<weatherListObject> list) {
+        adapter = new ForecastAdapter(getActivity(), list);
         forecastRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void showError(String error) {
+        ((GeneralActivity) getActivity()).showErrorSnack(error);
+    }
+
+    @Override
+    public void showError(int error) {
+        ((GeneralActivity) getActivity()).showErrorSnack(getString(error));
+
+    }
+
+    @Override
+    public void showProgress() {
+        ((GeneralActivity) getActivity()).showProgressView();
+
+    }
+
+    @Override
+    public void hideProgress() {
+        ((GeneralActivity) getActivity()).hideProgressView();
+
     }
 }
