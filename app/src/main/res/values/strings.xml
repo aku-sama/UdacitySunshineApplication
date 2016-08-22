@@ -4,4 +4,7 @@
 
     <string name="weather_item">%3$s: %4$s, Day %1$s oC, Night %2$s oC</string>
     <string name="weather_unknown">Unknown</string>
+    <string name="menu_refresh">Refresh</string>
+
+    <string name="celsius_degree"> \u2103</string>
 </resources>

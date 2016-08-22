@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import raspopova.diana.sunshineapplication.R;
 /**
  * Created by Diana on 19.08.2016.
  */
-public class GeneralActivity extends FragmentActivity {
+public class GeneralActivity extends AppCompatActivity {
 
     private RelativeLayout progress;
     private CoordinatorLayout coordinatorLayout;

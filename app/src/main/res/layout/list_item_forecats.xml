@@ -1,11 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    android:id="@+id/textViewListItemForecast"
-    style="@style/TextForecastItemStyle"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"/>
+<RelativeLayout android:id="@+id/forecastItemRoot"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:minHeight="?android:attr/listPreferredItemHeight"
+                android:soundEffectsEnabled="true">
+
+    <ImageView
+        android:id="@+id/imageForecastItem"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_forecast_img_height"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/textViewDate"
+        style="@style/TextForecastItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@+id/imageForecastItem"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:text="Today"
+        />
+
+    <TextView
+        android:id="@+id/textViewWeatherDescription"
+        style="@style/TextForecastItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewDate"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin_half"
+        android:layout_toRightOf="@+id/imageForecastItem"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:text="It's rainy"
+        />
+
+    <TextView
+        android:id="@+id/textViewDayTemperature"
+        style="@style/TextForecastItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center_vertical"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:text="18 oC"/>
+
+    <TextView
+        android:id="@+id/textViewNightTemperature"
+        style="@style/TextForecastItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewDayTemperature"
+        android:layout_marginTop="@dimen/activity_vertical_margin_half"
+        android:gravity="center_vertical"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:text="11 oC"/>
+</RelativeLayout>

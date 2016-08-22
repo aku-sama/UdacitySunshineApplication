@@ -2,10 +2,12 @@ package raspopova.diana.sunshineapplication.repository.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Diana on 13.08.2016.
  */
-public class weatherObject {
+public class weatherObject implements Serializable {
 
     @SerializedName("id")
     private long id;
